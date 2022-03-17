@@ -7,12 +7,22 @@ from django.views.generic import ListView,UpdateView,DeleteView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseForbidden
 # Create your views here.
 
 
 def Homepage(request):
-    news = News.objects.order_by("-tittle")[:10]
-    return render(request,"main/index.html",{"news":news})
+    news = News.objects.order_by("-tittle")[:6]
+    programms = Programms.objects.order_by("date")[:3]
+    return render(request,"main/index.html",{"news":news,"programms":programms})
+
+
+class ProgrammsListView(LoginRequiredMixin,ListView):
+    model = Programms
+    template_name = 'main/programmslist.html'
+    context_object_name = 'programmslist'
+    raise_exception = True
+
 
 class NewsListView(LoginRequiredMixin,ListView):
     model = News
@@ -20,20 +30,58 @@ class NewsListView(LoginRequiredMixin,ListView):
     context_object_name = 'newslist'
     raise_exception = True
 
+def Profile(request):
+    if request.user.is_authenticated:
+        return render(request,"main/cabinet.html")
+    else:
+        return HttpResponseForbidden()
+
+def CreateProgramms(request):
+    error = ''
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = ProgrammsForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                return redirect('programmslist')
+            else:
+                error = "Форма была неверно введена"
+        form = ProgrammsForm
+        context = {'form':form,
+        'error':error,
+        }
+        return render(request,'main/createprogramms.html',context)
+    else:
+        return HttpResponseForbidden()
+
+class ProgrammsUpdateView(LoginRequiredMixin,UpdateView):
+    model = Programms
+    template_name = 'main/createprogramms.html'
+    form_class = ProgrammsForm
+    success_url = reverse_lazy("programmslist")
+
+class ProgrammsDeleteView(LoginRequiredMixin,DeleteView):
+    model = Programms
+    template_name = 'main/programmslist.html'
+    success_url = reverse_lazy("programmslist")
+
 def CreateNews(request):
     error = ''
-    if request.method == 'POST':
-        form = NewsForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('News')
-        else:
-            error = "Форма была неверно введена"
-    form = NewsForm
-    context = {'form':form,
-    'error':error,
-    }
-    return render(request,'main/createnews.html',context)
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = NewsForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                return redirect('News')
+            else:
+                error = "Форма была неверно введена"
+        form = NewsForm
+        context = {'form':form,
+        'error':error,
+        }
+        return render(request,'main/createnews.html',context)
+    else:
+        return HttpResponseForbidden()
 
 class NewsUpdateView(LoginRequiredMixin,UpdateView):
     model = News

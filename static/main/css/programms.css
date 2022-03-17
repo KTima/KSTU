@@ -1,0 +1,63 @@
+
+.programms h2{
+    color: #002958;
+    text-align: center;
+    font-size: 2.5em;
+    font-family: Montserrat, Helvetica Neue, Arial, sans-serif;
+    margin-top: 10px;
+}
+.prblock{
+    width: 260px;
+    height: 330px;
+    border: 7px solid hsl(0, 0%, 75%,0.3);
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    color: black;
+    text-decoration: none;
+    font-size: 1.2em;
+    margin-top: 20px;
+    margin-left: 130px;
+}
+
+.prblock h3{
+    margin-top: 20px;
+    font-size: 1.5em;
+    color: #363d46;
+    left: -27%;
+    position: absolute;
+}
+.prblock ul{
+    font-weight: 400;
+    font-size: 18px;
+    left: -27%;
+    position: absolute;
+    list-style: none;
+    margin-top: 120px;
+}
+
+.prblock ul li{
+    padding-top: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid hsl(0, 0%, 75%,0.4);
+    width: 250px;
+}
+.prblock ul li img{
+    width: 30px;
+    height: 30px;
+    float: left;
+    padding-right: 15px;
+}
+.prblock ul li p{
+    padding-top: 5px;
+}
+.open{
+    color: #485cee;
+    writing-mode: vertical-rl;
+    position: absolute;
+    right: 0%;
+    bottom: -6%;
+}
+.open span{
+    font-size: 1.3em;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main/css/list.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="menu">
+    <span><a href="{% url 'homepage' %}">Домой</a></span><span><a href="{% url 'profile' %}">Кабинет</a></span><span><a href="{% url 'createprogramms' %}">Добавить программу</a></span>
+</div>
+    <table>
+        <tr>
+            <th>Название</th>
+            <th>Дата начала</th>
+            <th>Длительность</th>
+            <th>Место проведенние</th>
+        </tr>
+        {% for programm in programmslist %}
+        <tr>
+            <td>{{ programm.tittle }}</td><td>{{ programm.date }}</td><td>{{ programm.length }}</td><td>{{ programm.location }}</td>
+            <td><a href="{% url 'updateprogramms' programm.id %}">Редактировать</a></td>
+            <td><form id="delete_form" action="{% url 'deleteprogramms' programm.id %}" method="post">{% csrf_token %}
+                <button type="submit" class="shine-button">Удалить</button>
+            </form>
+            </td>
+        {% endfor %}
+        </tr>
+    </table>
+</body>
+</html>

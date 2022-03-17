@@ -5,29 +5,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'main/css/newslist.css' %}">
-
+    <link rel="stylesheet" href="{% static 'main/css/list.css' %}">
     <title>Все новости</title>
 </head>
 <body>
-    <a href="{% url 'createnews' %}">Добавить статью</a>
-    <div class="ul">
+    <div class="menu">
+    <span><a href="{% url 'homepage' %}">Домой</a></span><span><a href="{% url 'profile' %}">Кабинет</a></span><span><a href="{% url 'createnews' %}">Добавить статью</a></span>
+    </div>
+    <table>
+        <tr>
+            <th>Фото</th>
+            <th>Название</th>
+            <th>Текст</th>
+            <th>Дата публикации</th>
+        </tr>
         {% for info in newslist %}
-        <div class="li">
-            {% if info.images %}
-            <div class="imgfon"><img src="{{ info.images.url }}" alt=""> </div>
-                {% else %}
-                <div></div>
-            {%endif%}
-            <div class="liner"></div>
-            <h3>{{ info.tittle }}</h3>
-            <p>{{ info.full_text }}</p>
-            <span>{{ info.date }}</span>
-            <a href="{% url 'updatenews' info.id %}">Редактировать</a>
-            <form id="delete_form" action="{% url 'deletenews' info.id %}" method="post">{% csrf_token %}
+        <tr>
+            <td><img src="{{ info.images.url }}" alt=""></td>
+            <td>{{ info.tittle }}</td>
+            <td>{{ info.full_text }}</td>
+            <td>{{ info.date }}</td>
+            <td><a href="{% url 'updatenews' info.id %}">Редактировать</a></td>
+            <td><form id="delete_form" action="{% url 'deletenews' info.id %}" method="post">{% csrf_token %}
                 <button type="submit" class="shine-button">Удалить</button>
             </form>
-        </div>
+             </td>
+        </tr>
         {% endfor %}
+    </table>
 </body>
 </html>

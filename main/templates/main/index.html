@@ -3,14 +3,16 @@
 <html lang="ru">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="viewport" content="width=1100px, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'main/css/index.css' %}">
         <link rel="stylesheet" href="{% static 'main/css/sect-news.css'%}">
         <link rel="stylesheet" href="{% static 'main/css/sect2.css'%}">
         <link rel="stylesheet" href="{% static 'main/css/nav-bot.css'%}">
         <link rel="stylesheet" href="{% static 'main/css/secexp.css'%}">
+        <link rel="stylesheet" href="{% static 'main/css/prove.css'%}">
+        <link rel="stylesheet" href="{% static 'main/css/programms.css'%}">
         <title>KSTU</title>
     </head>
     <body>
@@ -29,7 +31,7 @@
                         {% if request.user.is_authenticated %}
                         <li><a href="" class="submenu-link">{{user.username}}</a>
                           <ul class="submenu">
-                            <li><a href="{% url 'News'%}">Кабинет</a></li>
+                            <li><a href="{% url 'profile'%}">Кабинет</a></li>
                             <li><a href="{% url 'logout' %}">Выйти</a></li>
                           </ul>
                         </li>
@@ -48,10 +50,8 @@
                     <div class="details">
                         <h1 style="color: white;" class="h1">Факультет Информационных Технологий</h1>
                         <p class=".p">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing 
-                            elit.
                         </p>
-                        <button class="button1">Подробнее</button>
+                        <a href="" class="button1">Подробнее</a>
                     </div>
                 </div>
                                 
@@ -61,10 +61,8 @@
                     <div class="details">
                         <h1 style="color: white;" class="h1">Технологический Факультет</h1>
                         <p class=".p">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing 
-                            elit.
                         </p>
-                        <button class="button">Подробнее</button>
+                        <a href="" class="button1">Подробнее</a>
                     </div>
                 </div>
                                 
@@ -73,10 +71,8 @@
                     <div class="details">
                         <h1 style="color: white;" class="h1">Факультет Транспорта и Машиностроения</h1>
                         <p class=".p">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing 
-                            elit.
                         </p>
-                        <button class="button">Подробнее</button>
+                        <a href="" class="button1">Подробнее</a>
                     </div>
                 </div>
                                 
@@ -85,10 +81,8 @@
                     <div class="details">
                         <h1 style="color: white;" class="h1">Инженерно-Экономический Факультет</h1>
                         <p class=".p">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing 
-                            elit.
                         </p>
-                        <button class="button">Подробнее</button>
+                        <a href="" class="button1">Подробнее</a>
                     </div>
                 </div>
                                 
@@ -97,18 +91,16 @@
                     <div class="details">
                         <h1 style="color: white;" class="h1">Энергетический Факультет</h1>
                         <p class=".p">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing 
-                            elit.
                         </p>
-                        <button class="button">Подробнее</button>
+                        <a href="" class="button1">Подробнее</a>
                     </div>
 
                 </div>
                                 
             </div>
 
-            <svg xmlns="http://www.w3.org/2000/svg" class="prev" width="56.898" height="91" viewBox="0 0 56.898 91"><path d="M45.5,0,91,56.9,48.452,24.068,0,56.9Z" transform="translate(0 91) rotate(-90)" fill="#fff"/></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" class="next" width="56.898" height="91" viewBox="0 0 56.898 91"><path d="M45.5,0,91,56.9,48.452,24.068,0,56.9Z" transform="translate(56.898) rotate(90)" fill="#fff"/></svg>
+<!--             <svg xmlns="http://www.w3.org/2000/svg" class="prev" width="56.898" height="50" viewBox="0 0 56.898 91"><path d="M45.5,0,91,56.9,48.452,24.068,0,56.9Z" transform="translate(21 91) rotate(-90)" fill="#fff"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="next" width="56.898" height="50" viewBox="0 0 56.898 91"><path d="M45.5,0,91,56.9,48.452,24.068,0,56.9Z" transform="translate(31.898) rotate(90)" fill="#fff"/></svg> -->
             <div class="trail">
                     <div class="box1 active"></div>
                     <div class="box2"></div>
@@ -117,38 +109,45 @@
                     <div class="box5"></div>
             </div>
         </div> 
-
-<section class="sect-news">
-    <h2>KSTU NEWS</h2>
-    <div class="ul">
-        {% for info in news %}
-        <a href="" class="li">
-            <div class="imgfon"><img src="{{ info.images.url }}" alt=""></div>
-            <div class="liner"></div>
-            <h3>{{ info.tittle }}</h3>
-            <p>{{ info.full_text }}</p>
-            <span>{{ info.date }}</span>
-        </a>
-        {% endfor %}
+<section class="history">
+    <h2>Кыргызский государственный технический университет</h2>
+    <h2>имени Исхака Раззакова</h2>
+    <div class = "uni">
+        <img src="{% static 'main/photo/university.png' %}" alt="">
     </div>
-<h2>
-    предстоящие программы
-</h2>
+    <p>Государственное высшее учебное заведение 4-й степени аккредитации. Расположен в г. Бишкек (Киргизия)</p>
 </section>
-
-<section class="timer">
-    <h1>До начала приема заявок осталось </h1>
-        <div class="timer__items">
-          <div class="timer__item timer__days">00</div>
-          <div class="timer__item timer__hours">00</div>
-          <div class="timer__item timer__minutes">00</div>
-          <div class="timer__item timer__seconds">00</div>
+<section class="accordion">
+    <h1>Почему стоит рассмотреть КГТУ?</h1>
+    <div class="plusy">
+        <div class="bet">
+            <img src="{% static 'main/photo/premium-icon-placeholder-819814.png' %}" alt="">
+            <h3>Локация</h3>
+            <p>Университет расположен в самом сердце Бишкек. Преимуществен
+                тем, что находится в культурно разнообразном районе, который также находится
+                недалеко от многих ведущих компаний!</p>
+            </div>
+        <div class="bet">
+            <img src="{% static 'main/photo/premium-icon-syllabus-3297265.png' %}" alt="">
+            <h3>Учебный план</h3>
+            <p>Все студенты получают высшее образование с базовыми знаниями в области литературы,
+                 физики, искусства, математики и науки.</p>
         </div>
-    <a href="" class="floating-button">Подать заявку</a>
-</section>
-
-<section class="exp">
-    <h1>EXPERIENCE KSTU</h1>
+        <div class="bet">
+            <img src="{% static 'main/photo/free-icon-book-1575553.png' %}" alt="">
+            <h3>Преподавтельский состав</h3>
+            <p>В КГТУ работают известные профессора которые за плечами имеют очень большой опыт</p>
+        </div>
+        <div class="bet">
+            <img src="{% static 'main/photo/premium-icon-coin-collecting-3592598.png' %}" alt="">
+            <h3>Возможность трудоустройства</h3>
+            <p>Выпускники КГТУ пользуются большим спросом. 80% прошлогоднего выпуска 
+                работают или учатся в аспирантуре, а средняя начальная зарплата составляет 2500-3000 долларов.</p>
+        </div>
+    </div>
+  </section>
+  <section class="exp">
+    <h1>Наши результаты</h1>
     <p>Мы гордимся своей культурой, духом инженерии и способностью к инновациям.</p>
     <div class="stena">
         <div class="rank">
@@ -168,10 +167,52 @@
         </div>
     </div>
 </section>
-
+  <section class="timer">
+    <h1>До начала приема заявок осталось </h1>
+        <div class="timer__items">
+          <div class="timer__item timer__days">00</div>
+          <div class="timer__item timer__hours">00</div>
+          <div class="timer__item timer__minutes">00</div>
+          <div class="timer__item timer__seconds">00</div>
+        </div>
+    <a href="" class="floating-button">Подать заявку</a>
+</section>
+<section class="programms">
+    <h2>
+        предстоящие программы
+    </h2>
+        {% for programm in programms %}
+        <a href="" class="prblock">
+            <h3>{{ programm.tittle }}</h3>
+            <ul>
+                <li><img src="{% static 'main/photo/icons8-флаг-2-60.png' %}" alt=""><p>{{ programm.date}}</p></li>
+                <li><img src="{% static 'main/photo/icons8-время-доставки-60.png' %}" alt=""><p>{{ programm.length }}</p></li>
+                <li><img src="{% static 'main/photo/icons8-локация-gps-64.png' %}" alt=""><p>{{ programm.location }}</p></li>
+            </ul>
+            <div class="open">
+                <span>Набор {{ programm.set }} --------</span>
+                <div class="openline"></div>
+            </div>
+        </a>
+        {% endfor %}
+</section>
+<section class="sect-news">
+    <h2>новости</h2>
+    <div class="ul">
+        {% for info in news %}
+        <a href="" class="li">
+            <div class="imgfon"><img src="{{ info.images.url }}" alt=""></div>
+            <div class="liner"></div>
+            <h3>{{ info.tittle }}</h3>
+            <p>{{ info.full_text }}</p>
+            <span>{{ info.date }}</span>
+        </a>
+        {% endfor %}
+    </div>
+</section>
 <section class="nav-bottom">
     <div class="forms">
-        <h2>Newsletter</h2>
+        <h2>Уведомления</h2>
         <form action="">
             <input type="text" class="forminput" placeholder="Email"><br>
             <input type="checkbox" id="fb" name="answer1" value="Facebook">

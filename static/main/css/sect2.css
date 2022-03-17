@@ -4,7 +4,6 @@
     height: 330px;
     display: block;
     position: relative;
-    
 }
 .timer h1{
     font-family: 'Inter UI', sans-serif;
@@ -16,8 +15,13 @@
 .timer__items {
     display: flex;
     font-size: 90px;
-    padding: 10px 0 0 340px;
+    padding: 10px 0 0 0px;
     transform: translateY(60px);
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+    width: 47%;
   }
   .timer__item {
     position: relative;

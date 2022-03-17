@@ -5,12 +5,15 @@
   margin: 0;
   padding: 0;
 }
-
+body{
+  min-width: 960px;
+}
 html {
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
   font-size: 100%;
   color: #fff;
+  background-position: center center;
 }
 @media only screen and (max-width: 100%) {
   html {
@@ -57,13 +60,8 @@ html {
   margin: 0;
   padding: 0;
 }
-.topmenu:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.topmenu > li {
 
+.topmenu > li {
   display: inline-block;
   position: relative;
   font-family: 'Open Sans', sans-serif;
@@ -98,9 +96,7 @@ html {
 }
 .submenu  li {
   padding-top: 10px;
-  border-bottom: 1px solid rgba(255,255,255,.1);
   padding-right: 5px;
-  
 }
 .submenu  a {
   color: white;
@@ -121,7 +117,7 @@ html {
 .slider {
   display: flex;
   width: 500%;
-  height: 657px;
+  height: 630px;
   transition: all 0.5s ease-in;
   transform: translateX(0);
 }
@@ -147,7 +143,7 @@ html {
 }
 .slider .box .bg {
   padding: 2rem;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.3);
   width: 40%;
   transform: skewX(7deg);
   position: absolute;
@@ -206,7 +202,7 @@ html {
 }
 .slider .box .details h1 {
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: 550;
   margin-bottom: 0.5rem;
 }
 .slider .box .details p {
@@ -221,62 +217,70 @@ html {
     margin-right: 0;
   }
 }
-.slider .box .details button {
-  padding: 1rem 3rem;
+.button1 {
+  padding: 0.7rem 2rem;
   color: rgb(255, 255, 255);
   border-radius: 2rem;
   outline: none;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-decoration: none;
 }
-.slider .box .details button:hover {
-  opacity: 0.8;
-}
-.slider .box .details button:focus {
+
+.slider .box .details .button1:focus {
   outline: none;
   border: none;
 }
 .slider .box1 {
-  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(" /static/main/photo/fit.png ");
+  background: linear-gradient( rgba(1, 20, 49, 0.2), rgba(1, 20, 49, 0.2)), url(" /static/main/photo/fit.png ");
   background-size: 100%;
   background-repeat: no-repeat;
 }
-.slider .box1 button {
-  background-color: #ff0077;
+.slider .box1 .button1{
+  background-color: #0326b1;
+  opacity: 0.8;
 }
 .slider .box2 {
-  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/static/main/photo/chimiya.jpg");
+  background: linear-gradient( rgba(1, 20, 49, 0.2), rgba(1, 20, 49, 0.2)), url("/static/main/photo/chimiya.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
 }
-.slider .box2 button {
-  background-color: #0033ff;
+.slider .box2 .button1{
+  background-color: #4f00a8;
+  opacity: 0.8;
+}
+.slider .box2 .button1:hover{
+  opacity: 0.3;
 }
 .slider .box3 {
-  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/static/main/photo/stansport.jpg");
+  background: linear-gradient( rgba(1, 20, 49, 0.2), rgba(1, 20, 49, 0.2)), url("/static/main/photo/stansport.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
 }
-.slider .box3 button {
-  background-color: #00be33;
+.slider .box3 .button1 {
+  background-color: #00a72c;
+  opacity: 0.8;
 }
 .slider .box4 {
-  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/static/main/photo/injenerno.jpg");
+  background: linear-gradient( rgba(1, 20, 49, 0.2), rgba(1, 20, 49, 0.2)), url("/static/main/photo/injekonom.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
 }
-.slider .box4 button {
-  background-color: #ff4e00;
+.slider .box4 .button1 {
+  background-color: #bd3a03;
+  opacity: 0.8;
 }
 .slider .box5 {
-  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("/static/main/photo/iot-4.jpg");
+  background: linear-gradient( rgba(1, 20, 49, 0.2), rgba(1, 20, 49, 0.2)), url("/static/main/photo/5ebcdb96624f1.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
 }
-.slider .box5 button {
-  background-color: #8000ff;
+.slider .box5 .button1 {
+  background-color: #5700ad;
+  opacity: 0.8;
 }
+
 .prev,
 .next,
 .trail {
@@ -303,22 +307,22 @@ html {
 }
 
 .prev {
-  top: 50%;
-  left: 2%;
+  top: 80%;
+  left: 45%;
   transform: translateY(-50%);
 }
 
 .next {
-  top: 50%;
-  right: 2%;
+  top: 80%;
+  right: 45%;
   transform: translateY(-50%);
 }
 
 .trail {
-  bottom: 1%;
+  bottom: -4%;
   left: 50%;
   transform: translateX(-50%);
-  width: 60%;
+  width: 50%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
@@ -348,4 +352,13 @@ html {
 }
 .active {
   opacity: 1 !important;
+}
+.history{
+  margin-top: 20px;
+  text-align: center;
+  color: #002958;
+  font-family: 'Inter UI', sans-serif;
+}
+.uni img{
+  width: 250px;
 }
