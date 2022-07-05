@@ -1,6 +1,6 @@
 from .views import *
 from main.views import Homepage
-from django.urls import path
+from kstu.urls import path
 
 urlpatterns = [
     path("",Homepage ,name='homepage'),
@@ -15,4 +15,7 @@ urlpatterns = [
     path("createprogramms/",CreateProgramms,name='createprogramms'),
     path("updateprogramms/<int:pk>/",ProgrammsUpdateView.as_view(),name = 'updateprogramms'),
     path("deleteprogramms/<int:pk>/",ProgrammsDeleteView.as_view(),name = "deleteprogramms"),
+    path("detailnews/<int:pk>",NewsDetailView.as_view(), name= 'detailnews'),
+    path("consulting/",CreateCons, name= 'consulting'),
+    path("consultingview/",ConsListView.as_view(), name= 'consultingview'),
 ]

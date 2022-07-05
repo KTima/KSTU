@@ -6,6 +6,8 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="viewport" content="width=1100px, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
         <link rel="stylesheet" href="{% static 'main/css/index.css' %}">
         <link rel="stylesheet" href="{% static 'main/css/sect-news.css'%}">
         <link rel="stylesheet" href="{% static 'main/css/sect2.css'%}">
@@ -13,111 +15,69 @@
         <link rel="stylesheet" href="{% static 'main/css/secexp.css'%}">
         <link rel="stylesheet" href="{% static 'main/css/prove.css'%}">
         <link rel="stylesheet" href="{% static 'main/css/programms.css'%}">
+        <link rel="stylesheet" href="{% static 'main/css/deps.css'%}">
         <title>KSTU</title>
     </head>
     <body>
-        <header class="header">
-            <div class="header_inner">
-                <div class="header_logo">
-                    <img src="{% static 'main/photo/kstu-w.jpg' %}" alt="">
-                </div>
-                <nav class="nav">
-                    <ul class="topmenu">
-                        <li><a href="">портал</a></li>
-                        <li><a href="">ведомость</a></li>
-                        <li><a href="">поиск студента</a></li>
-                        <li><a href="">абитуриент</a></li>
-                        <li><a href="">единое окно</a></li>
-                        {% if request.user.is_authenticated %}
-                        <li><a href="" class="submenu-link">{{user.username}}</a>
-                          <ul class="submenu">
-                            <li><a href="{% url 'profile'%}">Кабинет</a></li>
-                            <li><a href="{% url 'logout' %}">Выйти</a></li>
+    <section class="glav">
+            <header class="header">
+                <div class="header_inner">
+                    <div class="header_logo">
+                        <img src="{% static 'main/photo/kstu.png' %}" alt="">
+                    </div>
+                    <nav class="nav">
+                        <ul class="topmenu">
+                            <li><a href="">портал</a></li>
+                            <li><a href="">ведомость</a></li>
+                            <li><a href="">поиск студента</a></li>
+                            <li><a href="">абитуриент</a></li>
+                            <li><a href="">единое окно</a></li>
+                            {% if request.user.is_authenticated %}
+                            <li><a href="" class="submenu-link">{{user.username}}</a>
+                              <ul class="submenu">
+                                <li><a href="{% url 'profile'%}">Кабинет</a></li>
+                                <li><a href="{% url 'logout' %}">Выйти</a></li>
+                              </ul>
+                            </li>
+                            {% else %}
+                            <li><a class="nav_link" href="{% url 'login' %}">вход</a></li>
+                            {% endif %}
                           </ul>
-                        </li>
-                        {% else %}
-                        <li><a class="nav_link" href="{% url 'login' %}">вход</a></li>
-                        {% endif %}
-                      </ul>
-                </nav>
+                    </nav>
+                </div>
+            </header>
+        <div class="earth-js" id="bgearth"></div>
+        <div class="wel">
+            <h1>Добро пожаловать!</h1>
+            <p>Киргизский государственный технический университет имени И. Раззакова (КГТУ) — государственное высшее учебное заведение 4-й степени аккредитации. Расположен в г. Бишкек (Киргизия)</p>
+            
+            <div class="pod">
+                <a href="">Подробнее</a>
             </div>
-        </header>
-        <div class="container1"> 
-            <div class="slider">
-
-                <div class="box1 box">
-                    <div class="bg"></div>
-                    <div class="details">
-                        <h1 style="color: white;" class="h1">Факультет Информационных Технологий</h1>
-                        <p class=".p">
-                        </p>
-                        <a href="" class="button1">Подробнее</a>
-                    </div>
-                </div>
-                                
-                
-                <div class="box2 box">
-                    <div class="bg"></div>
-                    <div class="details">
-                        <h1 style="color: white;" class="h1">Технологический Факультет</h1>
-                        <p class=".p">
-                        </p>
-                        <a href="" class="button1">Подробнее</a>
-                    </div>
-                </div>
-                                
-                <div class="box3 box">
-                    <div class="bg"></div>
-                    <div class="details">
-                        <h1 style="color: white;" class="h1">Факультет Транспорта и Машиностроения</h1>
-                        <p class=".p">
-                        </p>
-                        <a href="" class="button1">Подробнее</a>
-                    </div>
-                </div>
-                                
-                <div class="box4 box">
-                    <div class="bg"></div>
-                    <div class="details">
-                        <h1 style="color: white;" class="h1">Инженерно-Экономический Факультет</h1>
-                        <p class=".p">
-                        </p>
-                        <a href="" class="button1">Подробнее</a>
-                    </div>
-                </div>
-                                
-                <div class="box5 box">
-                    <div class="bg"></div>
-                    <div class="details">
-                        <h1 style="color: white;" class="h1">Энергетический Факультет</h1>
-                        <p class=".p">
-                        </p>
-                        <a href="" class="button1">Подробнее</a>
-                    </div>
-
-                </div>
-                                
+        </div>
+        <div class="earth-js" id="bgearth"></div>
+    </section>
+    <section class="sectorex">
+        <div class="ex">
+            <div class="exblock">
+                <img src="{% static 'main/photo/free-icon-book-1575553.png' %}" alt="">
+                <h3>20000 студентов</h3>
             </div>
-
-<!--             <svg xmlns="http://www.w3.org/2000/svg" class="prev" width="56.898" height="50" viewBox="0 0 56.898 91"><path d="M45.5,0,91,56.9,48.452,24.068,0,56.9Z" transform="translate(21 91) rotate(-90)" fill="#fff"/></svg>
-            <svg xmlns="http://www.w3.org/2000/svg" class="next" width="56.898" height="50" viewBox="0 0 56.898 91"><path d="M45.5,0,91,56.9,48.452,24.068,0,56.9Z" transform="translate(31.898) rotate(90)" fill="#fff"/></svg> -->
-            <div class="trail">
-                    <div class="box1 active"></div>
-                    <div class="box2"></div>
-                    <div class="box3"></div>
-                    <div class="box4"></div>
-                    <div class="box5"></div>
+            <div class="exblock">
+                <img src="{% static 'main/photo/prepod.png' %}" alt="">
+                <h3>5000 преподавателей</h3>
+            </div >
+            <div class="exblock">
+                <img class ="kor" src="{% static 'main/photo/kor.png' %}" alt="">
+                <h3>10 курпусов</h3>
             </div>
-        </div> 
-<section class="history">
-    <h2>Кыргызский государственный технический университет</h2>
-    <h2>имени Исхака Раззакова</h2>
-    <div class = "uni">
-        <img src="{% static 'main/photo/university.png' %}" alt="">
-    </div>
-    <p>Государственное высшее учебное заведение 4-й степени аккредитации. Расположен в г. Бишкек (Киргизия)</p>
-</section>
-<section class="accordion">
+            <div class="exblock">
+                <img src="{% static 'main/photo/programms.png' %}" alt="">
+                <h3>более 20 образовательных программ</h3>
+            </div>
+        </div>
+    </section>
+<!-- <section class="accordion">
     <h1>Почему стоит рассмотреть КГТУ?</h1>
     <div class="plusy">
         <div class="bet">
@@ -145,6 +105,10 @@
                 работают или учатся в аспирантуре, а средняя начальная зарплата составляет 2500-3000 долларов.</p>
         </div>
     </div>
+  </section> -->
+  <!-- <section class="sectmap">
+      <h1>Местоположение</h1>
+    <div id='map' width="100%" style='height:400px'></div>
   </section>
   <section class="exp">
     <h1>Наши результаты</h1>
@@ -153,7 +117,7 @@
         <div class="rank">
             <h3>5</h3>
             <span>Место в КР</span><br>
-            <p>Среди самых умных студентов</p>
+            <p>Какой-то рейтинг</p>
         </div>
         <div class="rank">
             <h3>3</h3>
@@ -163,8 +127,23 @@
         <div class="rank">
             <h3>1</h3>
             <span>Место в КР</span><br>
-            <p>Среди программистов</p>
+            <p>Какой-то рейтинг</p>
         </div>
+    </div>
+</section> -->
+<section class="Department">
+    <h1>Факультеты</h1>
+    <div class = 'parent'>
+        <a href="" class = "deps"><img src="{% static 'main/иконки/it.png' %}" alt=""><h3>Факультет Информационных Технологий</h3></a>
+        <a href="" class = "deps"><img src="{% static 'main/иконки/ener.png' %}" alt=""><h3>Энергетический Факультет</h3></a>
+        <a href="" class = "deps"><img src="{% static 'main/иконки/tex.png' %}" alt=""><h3>Технологический Факультет</h3></a>
+        <a href="" class = "deps"><img src="{% static 'main/иконки/car.png' %}" alt=""><h3>Факультет Транспорта и Машиностроения</h3></a>
+    </div>
+    <div class = 'parent'>
+        <a href="" class = "deps"><img src="{% static 'main/иконки/engineer.png' %}" alt=""><h3>Инженерно Экономическйи Факультет</h3></a>
+        <a href="" class = "deps"><img src="{% static 'main/иконки/circuit.png' %}" alt=""><h3>Институт Электроники и Телкоммуникации</h3></a>
+        <a href="" class = "deps"><img src="{% static 'main/иконки/education.png' %}" alt=""><h3>Институт Совметсных Образовательных Программ</h3></a>
+        <a href="" class = "deps" id="ic"><img src="{% static 'main/иконки/kyrgem.png' %}" alt=""><h3>Кыргызско-Германский Техничсекий Институт</h3></a>
     </div>
 </section>
   <section class="timer">
@@ -175,7 +154,7 @@
           <div class="timer__item timer__minutes">00</div>
           <div class="timer__item timer__seconds">00</div>
         </div>
-    <a href="" class="floating-button">Подать заявку</a>
+    <a href="{% url 'consulting' %}" class="floating-button">Консультация</a>
 </section>
 <section class="programms">
     <h2>
@@ -200,11 +179,11 @@
     <h2>новости</h2>
     <div class="ul">
         {% for info in news %}
-        <a href="" class="li">
+        <a href="{% url 'detailnews' info.id %}" class="li">
             <div class="imgfon"><img src="{{ info.images.url }}" alt=""></div>
             <div class="liner"></div>
             <h3>{{ info.tittle }}</h3>
-            <p>{{ info.full_text }}</p>
+            <p>{{ info.full_text|truncatewords:20 }}</p>
             <span>{{ info.date }}</span>
         </a>
         {% endfor %}
@@ -223,8 +202,8 @@
     <div class="nav-bottom2">
         <h2>Присоединяйтесь к нам</h2>
         <div class="icons">
-            <a href="" class="icon"><img src="{% static 'main/иконки/icons8-instagram-100.png' %}" alt=""></a>
-            <a href="" class="icon"><img src="{% static 'main/иконки/icons8-facebook-96.png' %}" alt=""></a>
+            <a href="https://www.instagram.com/ief_kstu.kg/" class="icon"><img src="{% static 'main/иконки/icons8-instagram-100.png' %}" alt=""></a>
+            <a href="https://www.facebook.com/kstu.kg/" class="icon"><img src="{% static 'main/иконки/icons8-facebook-96.png' %}" alt=""></a>
             <a href="" class="icon"><img src="{% static 'main/иконки/icons8-vk-в-круге-90.png' %}" alt=""></a>
         </div>
         <ul class="navhelp">
@@ -241,5 +220,47 @@
         <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/CSSRulePlugin3.min.js"></script>
         <script type="text/javascript" src="{% static 'main/js/sect2.js' %}"></script>
         <script src="{% static 'main/js/index.js' %}"></script>
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1Ijoia296aG9iZWtvdnQiLCJhIjoiY2wxMmIzY3lkMDJ6OTNjczYyNGp0dDQxOSJ9.pKr2GAzdbgDbyacw5T9SPw';
+            var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [74.58752,42.845],
+            zoom: 17,
+            });
+            const marker1 = new mapboxgl.Marker()
+            .setLngLat([74.58752,42.845])
+            .addTo(map);
+            </script>
+         <script>
+
+            window.addEventListener( 'load', function() {
+                    var script = document.createElement( "script" );
+                    script.src = "static/main/js/miniature.js";
+                    document.body.appendChild( script );
+            } );
+            
+            
+            window.addEventListener( "earthjsload", function() {
+            
+                    new Earth( "bgearth", {
+                            location: { lat: 30, lng: -10 },
+                            light: 'none',
+                            autoRotate: true,
+                            autoRotateDelay: 0,
+                            autoRotateStart: 100,
+                            mapLandColor: 'rgb(187, 187, 187)',
+                            mapSeaColor: 'RGBA(13,19,14,0.25)',
+                            mapBorderColor: '#AAA',
+                            mapBorderWidth: 1,
+                            transparent: true,
+                            zoom: 1.2,
+                            quality: 4,
+                            draggable: false
+                    } );
+            
+            } );
+            
+            </script>   
     </body>
 </html>

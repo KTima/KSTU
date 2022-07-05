@@ -29,12 +29,17 @@ html {
 
 .header{
   width: 100%;
-  padding-top: 25px ;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
+  background-color: white;
+  margin-top: 50px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  box-shadow: 0 0 50px rgba(0,0,0,0.5); /* Параметры тени */
+
 }
 
 .header_inner{
@@ -46,8 +51,8 @@ html {
 .header_logo img{
   padding-left: 150px;
   cursor: pointer;
-  width: 170px;
-  height: 50px;
+  width: 220px;
+  height: 100%;
 
 }
 .nav{
@@ -70,8 +75,9 @@ html {
   text-transform: uppercase;
   font-size: 14px;
   font-weight: bold;
-  color: #ffffff;
+  color: #011935;
   padding: 5px 5px;
+  text-decoration: none;
 }
 .topmenu li a:hover { color: #00F0FF; }
 .submenu-link:after {
@@ -108,250 +114,33 @@ html {
   transform: scaleY(1);
 
 }
-
-.container1 {
-  position: relative;
-  overflow: hidden;
-}
-
-.slider {
-  display: flex;
-  width: 500%;
-  height: 630px;
-  transition: all 0.5s ease-in;
-  transform: translateX(0);
-}
-@media only screen and (max-width: 1000px) {
-  .slider {
-    height: 100vh;
-  }
-}
-.slider .box {
-  height: 100%;
+.glav{
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  align-items: center;
-  overflow: hidden;
-  position: relative;
-}
-@media only screen and (max-width: 650px) {
-  .slider .box {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, 1fr);
-  }
-}
-.slider .box .bg {
-  padding: 2rem;
-  background-color: rgba(0, 0, 0, 0.3);
-  width: 40%;
-  transform: skewX(7deg);
-  position: absolute;
-  height: 100%;
-  left: -10%;
-  padding-left: 20rem;
-  transform-origin: 0 100%;
-}
-@media only screen and (max-width: 800px) {
-  .slider .box .bg {
-    width: 65%;
-  }
-}
-@media only screen and (max-width: 650px) {
-  .slider .box .bg {
-    width: 100%;
-    left: 0;
-    bottom: 0;
-    height: 54%;
-    transform: skewX(0deg);
-  }
-}
-.slider .box .bg::before {
-  content: "";
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  background-color: inherit;
-  pointer-events: none;
-  transform: skewX(10deg);
-}
-@media only screen and (max-width: 650px) {
-  .slider .box .bg::before {
-    width: 120%;
-    bottom: 0;
-    transform: skewX(0deg);
-  }
-}
-.slider .box .details {
-  padding: 5rem;
-  padding-left: 10rem;
-  z-index: 100;
-  grid-column: 1/span 1;
-  grid-row: 1/-1;
-}
-@media only screen and (max-width: 650px) {
-  .slider .box .details {
-    grid-row: 2/span 1;
-    grid-column: 1/-1;
-    text-align: center;
-    padding: 2rem;
-    transform: translateY(-9rem);
-  }
-}
-.slider .box .details h1 {
-  font-size: 1.5rem;
-  font-weight: 550;
-  margin-bottom: 0.5rem;
-}
-.slider .box .details p {
-  display: inline-block;
-  font-size: 1.3rem;
-  color: #b5b4b4;
-  margin-bottom: 2rem;
-  margin-right: 5rem;
-}
-@media only screen and (max-width: 800px) {
-  .slider .box .details p {
-    margin-right: 0;
-  }
-}
-.button1 {
-  padding: 0.7rem 2rem;
-  color: rgb(255, 255, 255);
-  border-radius: 2rem;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-decoration: none;
-}
-
-.slider .box .details .button1:focus {
-  outline: none;
-  border: none;
-}
-.slider .box1 {
-  background: linear-gradient( rgba(1, 20, 49, 0.2), rgba(1, 20, 49, 0.2)), url(" /static/main/photo/fit.png ");
+  height: 700px;
+  background: url("/static/main/photo/hedfon3.png") no-repeat;
   background-size: 100%;
-  background-repeat: no-repeat;
+  z-index: -1;
 }
-.slider .box1 .button1{
-  background-color: #0326b1;
-  opacity: 0.8;
-}
-.slider .box2 {
-  background: linear-gradient( rgba(1, 20, 49, 0.2), rgba(1, 20, 49, 0.2)), url("/static/main/photo/chimiya.jpg");
-  background-size: 100%;
-  background-repeat: no-repeat;
-}
-.slider .box2 .button1{
-  background-color: #4f00a8;
-  opacity: 0.8;
-}
-.slider .box2 .button1:hover{
-  opacity: 0.3;
-}
-.slider .box3 {
-  background: linear-gradient( rgba(1, 20, 49, 0.2), rgba(1, 20, 49, 0.2)), url("/static/main/photo/stansport.jpg");
-  background-size: 100%;
-  background-repeat: no-repeat;
-}
-.slider .box3 .button1 {
-  background-color: #00a72c;
-  opacity: 0.8;
-}
-.slider .box4 {
-  background: linear-gradient( rgba(1, 20, 49, 0.2), rgba(1, 20, 49, 0.2)), url("/static/main/photo/injekonom.jpg");
-  background-size: 100%;
-  background-repeat: no-repeat;
-}
-.slider .box4 .button1 {
-  background-color: #bd3a03;
-  opacity: 0.8;
-}
-.slider .box5 {
-  background: linear-gradient( rgba(1, 20, 49, 0.2), rgba(1, 20, 49, 0.2)), url("/static/main/photo/5ebcdb96624f1.jpg");
-  background-size: 100%;
-  background-repeat: no-repeat;
-}
-.slider .box5 .button1 {
-  background-color: #5700ad;
-  opacity: 0.8;
-}
-
-.prev,
-.next,
-.trail {
-  z-index: 10000;
-  position: absolute;
-}
-
-.prev,
-.next {
-  width: 3rem;
-  cursor: pointer;
-  opacity: 0.2;
-  transition: all 0.3s ease;
-}
-@media only screen and (max-width: 650px) {
-  .prev,
-.next {
-    display: none;
-  }
-}
-.prev:hover,
-.next:hover {
-  opacity: 1;
-}
-
-.prev {
-  top: 80%;
-  left: 45%;
-  transform: translateY(-50%);
-}
-
-.next {
-  top: 80%;
-  right: 45%;
-  transform: translateY(-50%);
-}
-
-.trail {
-  bottom: -4%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50%;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1rem;
+.wel{
   text-align: center;
-  font-size: 1.5rem;
+  width: 40%;
+  height: 20%;
+  padding-top: 20%;
+  padding-left: 31%;
 }
-@media only screen and (max-width: 650px) {
-  .trail {
-    width: 90%;
-    bottom: 13%;
-  }
+.wel p{
+  margin-top: 20px;
+  font-size: 1.2em;
 }
-.trail div {
-  padding: 2rem;
-  border-top: 3px solid #fff;
-  cursor: pointer;
-  opacity: 0.3;
-  transition: all 0.3s ease;
+.pod{
+  padding-top: 50px;
 }
-.trail div:hover {
-  opacity: 0.6;
-}
-@media only screen and (max-width: 650px) {
-  .trail div {
-    padding: 1rem;
-  }
-}
-.active {
-  opacity: 1 !important;
+.pod a{
+  text-decoration: none;
+  color: white;
+  padding: 15px 30px 15px 30px ;
+  border-radius: 20px;
+  background-color: #1633A1;
 }
 .history{
   margin-top: 20px;
@@ -362,3 +151,118 @@ html {
 .uni img{
   width: 250px;
 }
+.ex{
+  width: 70%;
+  height: 140px;
+  box-shadow: 0 0 50px rgba(0,0,0,0.5); 
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  margin-top: -70px;
+  margin-bottom: 50px;
+  display: flex;
+}
+.exblock{
+  float:left;
+  color: #002958;
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+.exblock img{
+  width: 60px;
+  height: 60px;
+}
+/* .sectmap h1 {
+  color: #002958;
+  font-family: Sanchez;
+  text-align: center;
+  font-size: 50px;
+  margin-top: 20px;
+} */
+
+#bgearth {
+	position: relative;
+	top: 30%;
+	width: 25vw;
+	left: 5%;
+	pointer-events: none;
+  float: left;
+}
+
+@media (max-width: 999px) {
+	#bgearth {
+		width: 70vw;
+	}	
+}
+
+@media (max-width: 719px) {
+	#bgearth {
+		width: 75vw;
+	}	
+}
+
+@media (max-width: 511px) {
+	#bgearth {
+		width: 80vw;
+	}	
+	header {
+		padding: 9em 0;
+	}
+}
+
+@media (max-width: 399px) {
+	#bgearth {
+		width: 100vw;
+	}
+	header {
+		padding: 8em 0;
+	}
+}
+
+.earth-js {
+	transition: opacity 1.5s ease;
+	opacity: 0;
+}
+.earth-js.earth-ready {
+	opacity: 2;
+}
+
+.half-earth {
+	position: relative;
+	overflow: hidden;
+}
+.half-earth::before {
+	content: "";
+	display: block;
+	padding-top: 50%;
+}
+.half-earth::after {
+	content: "";
+	display: block;
+	position: absolute;
+	bottom: 0;
+	height: 1px;
+	left: 0;
+	right: 0;
+	z-index: 15;
+	background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 30%,rgba(255,255,255,1) 70%,rgba(255, 255, 255, 1) 100%);
+}
+.half-earth > div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+
+}
+
+.earth-container{position:relative;z-index:1}
+.earth-container::before{content:"";display:block;padding-top:100%}
+.earth-container>canvas{position:absolute;top:0;left:0;z-index:1000;user-select:none}
+.earth-draggable{cursor:all-scroll;cursor:-webkit-grab;cursor:grab}
+.earth-dragging *{cursor:all-scroll;cursor:-webkit-grabbing!important;cursor:grabbing!important}
+.earth-clickable{cursor:pointer}
+.earth-overlay{position:absolute;top:0;left:0;user-select:none;pointer-events:none;transform-origin:0 0}
+.earth-overlay a,.earth-overlay input,.earth-overlay button{pointer-events:all}
+.earth-hittest{position:fixed;width:200vh;max-width:100%;top:0;left:0;z-index:999999}
+.earth-hittest svg{max-width:100%;height:auto;display:block;margin:0;opacity:0}

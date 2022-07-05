@@ -12,11 +12,7 @@ class LoginUserForm(AuthenticationForm):
 class NewsForm(ModelForm):
     class Meta:
         model = News
-        fields = ['images','tittle','full_text','date']
-
-        widgets = {
-            'date':DateInput(attrs = {'type':'date'}),
-        }
+        fields = ['images','tittle','full_text']
         
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -33,6 +29,17 @@ class ProgrammsForm(ModelForm):
         widgets = {
             'date':DateInput(attrs = {'type':'date'}),
         }
+        
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.add_input(Submit('submit', 'Сохранить'))
+
+class ConsForm(ModelForm):
+    class Meta:
+        model = Consulting
+        fields = ['name','email','phone','text','answer']
         
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

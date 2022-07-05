@@ -1,9 +1,8 @@
-from pyexpat import model
 from django.shortcuts import render,redirect
 from django.urls import reverse_lazy
 from .models import *
 from .forms import *
-from django.views.generic import ListView,UpdateView,DeleteView
+from django.views.generic import ListView,UpdateView,DeleteView,DetailView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -14,7 +13,8 @@ from django.http import HttpResponseForbidden
 def Homepage(request):
     news = News.objects.order_by("-tittle")[:6]
     programms = Programms.objects.order_by("date")[:3]
-    return render(request,"main/index.html",{"news":news,"programms":programms})
+    mapbox_access_token = 'pk.my_mapbox_access_token'
+    return render(request,"main/index.html",{"news":news,"programms":programms,"mapbox_access_token":mapbox_access_token})
 
 
 class ProgrammsListView(LoginRequiredMixin,ListView):
@@ -109,3 +109,33 @@ class LoginUser(LoginView):
 def logout_user(request):
     logout(request)
     return redirect('homepage')
+
+
+class NewsDetailView(DetailView):
+    model = News
+    template_name = 'main/detailnews.html'
+    context_object_name = 'news'
+
+
+def CreateCons(request):
+    error = ''
+    if request.method == 'POST':
+        form = ConsForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('homepage')
+        else:
+            error = "Форма была неверно введена"
+    form = ConsForm
+    context = {'form':form,
+    'error':error,
+    }
+    return render(request,'main/consulting.html',context)
+
+class ConsListView(LoginRequiredMixin,ListView):
+    model = Consulting
+    template_name = 'main/consultingview.html'
+    context_object_name = 'conslist'
+    raise_exception = True
+
+

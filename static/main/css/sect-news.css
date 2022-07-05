@@ -12,6 +12,9 @@
     height: 100%;
     padding-bottom: 20px;
 }
+.prblock{
+    width:33.33%;
+}
 .ul{
     width: 95%;
     height: 100%;
@@ -22,8 +25,8 @@
 }
  .li {
             display : inline-block;
-            width : 380px;
-            height: 450px;
+            width:30%;
+            height: 550px;
             color: #363d46;
             /* background: #363d46; */
             background: white;
@@ -53,13 +56,13 @@
     transform: scale(1.08); 
 }
 .liner{
-    border: 2px solid #485cee;
-    width: 0;
+    width: 2px;
     height: 60px;
     float: left;
     margin-left: 15px;
     transform: translateY(-20px);
     position: relative;
+    background-color:#485cee ;
 }
 .sect-news h2{
     margin-top: 20px;

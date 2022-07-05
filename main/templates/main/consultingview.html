@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main/css/list.css' %}">
+    <title>Все новости</title>
+</head>
+<body>
+    <div class="menu">
+    <span><a href="{% url 'homepage' %}">Домой</a></span><span><a href="{% url 'profile' %}">Кабинет</a></span><span><a href="{% url 'createnews' %}">Добавить статью</a></span>
+    </div>
+    <table>
+        <tr>
+            <th>Имя</th>
+            <th>Почта</th>
+            <th>Телефон</th>
+            <th>Описание</th>
+            <th>Время отправки</th>
+        </tr>
+        {% for cons in conslist %}
+        <tr>
+            <td>{{ cons.name }}</td>
+            <td>{{ cons.email }}</td>
+            <td>{{ cons.phone }}</td>
+            <td>{{ cons.text }}</td>
+            <td>{{ cons.date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
